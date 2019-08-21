@@ -1,0 +1,32 @@
+﻿@model IEnumerable<WMDAL.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>Prduct Name</th>
+        <th>Price</th>
+    </tr>
+    @*@for (int i = 0; i < Model.Count(); i++)*@
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Price</td>
+            <td>
+                <a href="@Url.Action("Edit", "Product", new { @id = @item.ID })">Edit</a>
+            </td>
+            <td>
+                <a href="@Url.Action("Delete", "Product", new { @id = @item.ID })">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+<a href="@Url.Action("Create","Product")">Add product</a>
+
+
+
+
